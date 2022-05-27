@@ -1,5 +1,7 @@
 ﻿from .locators import BasePageLocators
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage():
     def __init__(self, browser, url):
@@ -50,3 +52,42 @@ class BasePage():
     def should_be_successful_sent_message_window(self):
         successful_sent_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
         assert "Спасибо, мы свяжемся с вами в ближайшее время" in successful_sent_message_window_text
+
+    def search_for_product(self, product):
+        header_search_field = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_FIELD)
+        header_search_field.send_keys(product)
+        header_search_button = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON)
+        header_search_button.click()
+
+    def should_be_found_products(self):
+        search_result_number = len(self.browser.find_elements(*BasePageLocators.PRODUCT_CARD))
+        print(search_result_number)
+        assert search_result_number > 0
+
+    def fill_in_registration_form(self, name, surname, phone, email, password):
+        account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
+        account_link.click()
+        register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
+        register_link.click()
+        time.sleep(2)
+        register_name = self.browser.find_element(*BasePageLocators.REGISTER_NAME)
+        register_name.send_keys(name)
+        register_surname = self.browser.find_element(*BasePageLocators.REGISTER_SURNAME)
+        register_surname.send_keys(surname)
+        register_phone = self.browser.find_element(*BasePageLocators.REGISTER_PHONE)
+        register_phone.send_keys(phone)
+        register_email = self.browser.find_element(*BasePageLocators.REGISTER_EMAIL)
+        register_email.send_keys(email)
+        register_password = self.browser.find_element(*BasePageLocators.REGISTER_PASSWORD)
+        register_password.send_keys(password)
+        register_form_checkbox = self.browser.find_element(*BasePageLocators.REGISTER_FORM_CHECKBOX)
+        register_form_checkbox.click()
+        register_button = self.browser.find_element(*BasePageLocators.REGISTER_BUTTON)
+        register_button.click()
+
+    def should_be_user_account_page(self, user_name):
+        time.sleep(3)
+        user_account_header = self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
+        print(user_account_header)
+        assert user_name in user_account_header
+
