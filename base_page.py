@@ -10,44 +10,42 @@ class BasePage():
 
     def open(self):
         self.browser.get(self.url)
+        # self.browser.implicitly_wait(10)
 
-    def accept_city_in_popup_massage(self):
-        accept_city_button = self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON)
-        accept_city_button.click()
+    # def accept_city_in_popup_massage(self):
+    #     accept_city_button = self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON)
+    #     accept_city_button.click()
 
-    def should_be_right_city_in_header(self, current_user_city):
-        city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).text
-        print(city_name_in_header)
-        assert city_name_in_header == current_user_city
 
-    def can_change_city_in_the_header_menu(self):
-        city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER)
-        city_name_in_header.click()
-        time.sleep(2)
-        first_city_name_in_header = self.browser.find_element(*BasePageLocators.FIRST_CITY_NAME_IN_CITY_MENU)
-        extract_first_city_name_in_header = first_city_name_in_header.text
-        first_city_name_in_header.click()
-        time.sleep(2)
-        city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).text
-        assert extract_first_city_name_in_header == city_name_in_header
 
-    def open_desktop_callback_form(self):
-        desktop_callback_form = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM)
-        desktop_callback_form.click()
+    # def can_change_city_in_the_header_menu(self):
+    #     city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER)
+    #     city_name_in_header.click()
+    #     time.sleep(2)
+    #     first_city_name_in_header = self.browser.find_element(*BasePageLocators.FIRST_CITY_NAME_IN_CITY_MENU)
+    #     extract_first_city_name_in_header = first_city_name_in_header.text
+    #     first_city_name_in_header.click()
+    #     time.sleep(2)
+    #     city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).text
+    #     assert extract_first_city_name_in_header == city_name_in_header
 
-    def fill_in_contacts_in_desktop_callback_form(self, name, phone_number):
-        name_field = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_NAME_FIELD)
-        name_field.send_keys(name)
-        phone_field = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD)
-        phone_field.send_keys(phone_number)
+    # def open_desktop_callback_form(self):
+    #     desktop_callback_form = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM)
+    #     desktop_callback_form.click()
 
-    def accept_privacy_policy_checkbox(self):
-        privacy_policy_checkbox = self.browser.find_element(*BasePageLocators.PRIVACY_POLICY_CHECKBOX)
-        privacy_policy_checkbox.click()
+    # def fill_in_contacts_in_desktop_callback_form(self, name, phone_number):
+    #     name_field = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_NAME_FIELD)
+    #     name_field.send_keys(name)
+    #     phone_field = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD)
+    #     phone_field.send_keys(phone_number)
 
-    def push_contact_sent_button(self):
-        contact_sent_button = self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON)
-        contact_sent_button.click()
+    # def accept_privacy_policy_checkbox(self):
+    #     privacy_policy_checkbox = self.browser.find_element(*BasePageLocators.PRIVACY_POLICY_CHECKBOX)
+    #     privacy_policy_checkbox.click()
+
+    # def push_contact_sent_button(self):
+    #     contact_sent_button = self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON)
+    #     contact_sent_button.click()
 
     def should_be_successful_sent_message_window(self):
         successful_sent_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
@@ -65,11 +63,11 @@ class BasePage():
         assert search_result_number > 0
 
     def fill_in_registration_form(self, name, surname, phone, email, password):
+        # self.browser.implicitly_wait(10)
         account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
         account_link.click()
         register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
         register_link.click()
-        time.sleep(2)
         register_name = self.browser.find_element(*BasePageLocators.REGISTER_NAME)
         register_name.send_keys(name)
         register_surname = self.browser.find_element(*BasePageLocators.REGISTER_SURNAME)
@@ -90,4 +88,47 @@ class BasePage():
         user_account_header = self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
         print(user_account_header)
         assert user_name in user_account_header
+
+#new function list
+    def click_accept_city_in_popup_massage(self):
+        self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON).click
+
+    def should_be_current_user_city_in_header(self, current_user_city):
+        city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).text
+        print(city_name_in_header)
+        assert city_name_in_header == current_user_city
+
+    def click_on_city_name_in_header(self):
+        self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).click
+
+    def click_on_first_city_name_in_city_list(self):
+        self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).click
+
+    def should_be_first_city_from_city_list_in_header(self):
+        city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER)
+        city_name_in_header.click()
+        first_city_name_in_city_list = self.browser.find_element(*BasePageLocators.FIRST_CITY_NAME_IN_CITY_MENU).text
+        assert city_name_in_header == first_city_name_in_city_list
+
+    def click_on_desktop_callback_form(self):
+        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM).click
+
+    def fill_in_name_field_in_desktop_callback_form(self, name):
+        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_NAME_FIELD).send_keys(name)
+
+    def fill_in_phone_number_field_in_desktop_callback_form(self, phone):
+        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD).send_keys(phone_number)
+
+    def click_on_accept_privacy_policy_checkbox_in_callback_form(self):
+        self.browser.find_element(*BasePageLocators.PRIVACY_POLICY_CHECKBOX).click()
+
+    def click_on_contact_sent_button_in_callback_form(self):
+        self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON).click()
+
+
+
+
+
+
+
 

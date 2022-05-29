@@ -6,4 +6,5 @@ from selenium.webdriver.chrome.options import Options
 def browser(request):
     browser = webdriver.Chrome()
     browser.maximize_window()
+    browser.implicitly_wait(10)
     yield browser

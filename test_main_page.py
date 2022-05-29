@@ -1,5 +1,6 @@
 ﻿from .base_page import BasePage
 import time
+from .locators import BasePageLocators
 
 # def test_should_be_right_location(browser):
 #     link = "https://makmen.ru"
@@ -39,7 +40,7 @@ import time
 def test_register_new_user(browser):
     link = "https://makmen.ru"
     page = BasePage(browser, link)
-    browser.implicitly_wait(10)
+    # browser.implicitly_wait(10)
     page.open()
     page.accept_city_in_popup_massage()
     page.fill_in_registration_form("Test_user3", "Test_surname12", "99999999999", "t443t@yandex.ru", "1111tes111")
