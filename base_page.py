@@ -43,51 +43,48 @@ class BasePage():
     #     privacy_policy_checkbox = self.browser.find_element(*BasePageLocators.PRIVACY_POLICY_CHECKBOX)
     #     privacy_policy_checkbox.click()
 
-    # def push_contact_sent_button(self):
-    #     contact_sent_button = self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON)
-    #     contact_sent_button.click()
+    # def push_contact_send_button(self):
+    #     contact_send_button = self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON)
+    #     contact_send_button.click()
 
-    def should_be_successful_sent_message_window(self):
-        successful_sent_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
-        assert "Спасибо, мы свяжемся с вами в ближайшее время" in successful_sent_message_window_text
+    # def should_be_successful_send_message_window(self):
+    #     successful_send_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
+    #     assert "Спасибо, мы свяжемся с вами в ближайшее время" in successful_send_message_window_text
 
-    def search_for_product(self, product):
-        header_search_field = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_FIELD)
-        header_search_field.send_keys(product)
-        header_search_button = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON)
-        header_search_button.click()
+    # def search_for_product(self, product):
+    #     header_search_field = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_FIELD)
+    #     header_search_field.send_keys(product)
+    #     header_search_button = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON)
+    #     header_search_button.click()
 
-    def should_be_found_products(self):
-        search_result_number = len(self.browser.find_elements(*BasePageLocators.PRODUCT_CARD))
-        print(search_result_number)
-        assert search_result_number > 0
+    # def should_be_found_products(self):
+    #     search_result_number = len(self.browser.find_elements(*BasePageLocators.PRODUCT_CARD))
+    #     print(search_result_number)
+    #     assert search_result_number > 0
 
-    def fill_in_registration_form(self, name, surname, phone, email, password):
-        # self.browser.implicitly_wait(10)
-        account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
-        account_link.click()
-        register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
-        register_link.click()
-        register_name = self.browser.find_element(*BasePageLocators.REGISTER_NAME)
-        register_name.send_keys(name)
-        register_surname = self.browser.find_element(*BasePageLocators.REGISTER_SURNAME)
-        register_surname.send_keys(surname)
-        register_phone = self.browser.find_element(*BasePageLocators.REGISTER_PHONE)
-        register_phone.send_keys(phone)
-        register_email = self.browser.find_element(*BasePageLocators.REGISTER_EMAIL)
-        register_email.send_keys(email)
-        register_password = self.browser.find_element(*BasePageLocators.REGISTER_PASSWORD)
-        register_password.send_keys(password)
-        register_form_checkbox = self.browser.find_element(*BasePageLocators.REGISTER_FORM_CHECKBOX)
-        register_form_checkbox.click()
-        register_button = self.browser.find_element(*BasePageLocators.REGISTER_BUTTON)
-        register_button.click()
+    # def fill_in_registration_form(self, name, surname, phone, email, password):
+    #     account_link = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
+    #     account_link.click()
+    #     register_link = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
+    #     register_link.click()
+    #     register_name = self.browser.find_element(*BasePageLocators.REGISTER_NAME)
+    #     register_name.send_keys(name)
+    #     register_surname = self.browser.find_element(*BasePageLocators.REGISTER_SURNAME)
+    #     register_surname.send_keys(surname)
+    #     register_phone = self.browser.find_element(*BasePageLocators.REGISTER_PHONE)
+    #     register_phone.send_keys(phone)
+    #     register_email = self.browser.find_element(*BasePageLocators.REGISTER_EMAIL)
+    #     register_email.send_keys(email)
+    #     register_password = self.browser.find_element(*BasePageLocators.REGISTER_PASSWORD)
+    #     register_password.send_keys(password)
+    #     register_form_checkbox = self.browser.find_element(*BasePageLocators.REGISTER_FORM_CHECKBOX)
+    #     register_form_checkbox.click()
+    #     register_button = self.browser.find_element(*BasePageLocators.REGISTER_BUTTON)
+    #     register_button.click()
 
-    def should_be_user_account_page(self, user_name):
-        time.sleep(3)
-        user_account_header = self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
-        print(user_account_header)
-        assert user_name in user_account_header
+    # def should_be_user_account_page(self, user_name):
+    #     user_account_header = self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
+    #     assert user_name in user_account_header
 
 #new function list
     def click_accept_city_in_popup_massage(self):
@@ -120,10 +117,67 @@ class BasePage():
         self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD).send_keys(phone_number)
 
     def click_on_accept_privacy_policy_checkbox_in_callback_form(self):
-        self.browser.find_element(*BasePageLocators.PRIVACY_POLICY_CHECKBOX).click()
+        self.browser.find_element(*BasePageLocators.CALLBACK_FORM_POLICY_CHECKBOX).click()
 
-    def click_on_contact_sent_button_in_callback_form(self):
+    def click_on_contact_send_button_in_callback_form(self):
         self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON).click()
+
+    def should_be_successful_send_message_window(self):
+        successful_send_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
+        assert "Спасибо, мы свяжемся с вами в ближайшее время" in successful_send_message_window_text
+
+    def type_in_search_query_in_header(self, product):
+        self.browser.find_element(*BasePageLocators.HEADER_SEARCH_FIELD).send_keys(product)
+
+    def click_on_search_button_in_header(self):
+        self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON).click()
+
+    def should_be_found_products_in_search_results(self):
+        search_result_number = len(self.browser.find_elements(*BasePageLocators.PRODUCT_CARD))
+        print(search_result_number)
+        assert search_result_number > 0
+
+    def click_on_account_link_in_header(self):
+        self.browser.find_element(*BasePageLocators.ACCOUNT_LINK).click()
+
+    def click_on_register_link_in_account_menu(self):
+        self.browser.find_element(*BasePageLocators.REGISTER_LINK).click()
+
+    def fill_in_name_field_in_register_form(self, name):
+        self.browser.find_element(*BasePageLocators.REGISTER_NAME).send_keys(name)
+
+    def fill_in_surname_field_in_register_form(self, surname):
+        self.browser.find_element(*BasePageLocators.REGISTER_SURNAME).send_keys(surname)
+
+    def fill_in_phone_field_in_register_form(self, phone):
+        self.browser.find_element(*BasePageLocators.REGISTER_PHONE).send_keys(phone)
+
+    def fill_in_email_field_in_register_form(self, email):
+        self.browser.find_element(*BasePageLocators.REGISTER_EMAIL).send_keys(email)
+
+    def fill_in_password_field_in_register_form(self, password):
+        self.browser.find_element(*BasePageLocators.REGISTER_PASSWORD).send_keys(password)
+
+    def click_on_accept_privacy_policy_checkbox_in_register_form(self):
+        self.browser.find_element(*BasePageLocators.REGISTER_FORM_PRIVACY_CHECKBOX).click()
+
+    def click_on_register_form_send_button(self):
+        self.browser.find_element(*BasePageLocators.REGISTER_FORM_SEND_BUTTON).click()
+
+    def should_be_user_account_page_after_successful_registration(self, user_name):
+        assert user_name in self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
