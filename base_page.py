@@ -2,15 +2,26 @@
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+import random
 
 class BasePage():
-    def __init__(self, browser, url):
+    def __init__(self, browser, timeout = 10):
         self.browser = browser
-        self.url = url
+        self.browser.implicitly_wait(timeout)
 
-    def open(self):
-        self.browser.get(self.url)
+    def open(self, url):
+        self.browser.get(url)
         # self.browser.implicitly_wait(10)
+
+    def find_element(self, locator):
+        element = WebDriverWait(self.browser, 10).until(
+            EC.visibility_of_element_located(locator)
+        )
+        return element
+
+    def generate_email_for_registration(self):
+        return str(random.randint(0, 1000)) + str(random.randint(0, 1000)) + "@yandex.ru"
 
     # def accept_city_in_popup_massage(self):
     #     accept_city_button = self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON)
@@ -88,7 +99,8 @@ class BasePage():
 
 #new function list
     def click_accept_city_in_popup_massage(self):
-        self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON).click
+        button = self.browser.find_element(*BasePageLocators.CITY_POPUP_YES_BUTTON)
+        button.click()
 
     def should_be_current_user_city_in_header(self, current_user_city):
         city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).text
@@ -96,33 +108,44 @@ class BasePage():
         assert city_name_in_header == current_user_city
 
     def click_on_city_name_in_header(self):
-        self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).click
+        button = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER)
+        button.click()
 
     def click_on_first_city_name_in_city_list(self):
-        self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER).click
+        button = self.browser.find_element(*BasePageLocators.FIRST_CITY_NAME_IN_CITY_MENU)
+        button.click()
 
     def should_be_first_city_from_city_list_in_header(self):
+        time.sleep(1)
         city_name_in_header = self.browser.find_element(*BasePageLocators.CITY_NAME_IN_HEADER)
+        city_name_in_header_name = city_name_in_header.text
         city_name_in_header.click()
-        first_city_name_in_city_list = self.browser.find_element(*BasePageLocators.FIRST_CITY_NAME_IN_CITY_MENU).text
-        assert city_name_in_header == first_city_name_in_city_list
+        first_city_in_list = WebDriverWait(self.browser, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//a[@data-id='4115']"))
+        )
+        first_city_name_in_list = first_city_in_list.text
+        assert first_city_name_in_list == city_name_in_header_name
 
     def click_on_desktop_callback_form(self):
-        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM).click
+        button = self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM)
+        button.click()
 
     def fill_in_name_field_in_desktop_callback_form(self, name):
         self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_NAME_FIELD).send_keys(name)
 
     def fill_in_phone_number_field_in_desktop_callback_form(self, phone):
-        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD).send_keys(phone_number)
+        self.browser.find_element(*BasePageLocators.DESKTOP_CALLBACK_FORM_PHONE_FIELD).send_keys(phone)
 
     def click_on_accept_privacy_policy_checkbox_in_callback_form(self):
-        self.browser.find_element(*BasePageLocators.CALLBACK_FORM_POLICY_CHECKBOX).click()
+        button = self.browser.find_element(*BasePageLocators.CALLBACK_FORM_POLICY_CHECKBOX)
+        button.click()
 
     def click_on_contact_send_button_in_callback_form(self):
-        self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON).click()
+        button = self.browser.find_element(*BasePageLocators.CONTACT_SENT_BUTTON)
+        button.click()
 
     def should_be_successful_send_message_window(self):
+        time.sleep(1)
         successful_send_message_window_text = self.browser.find_element(*BasePageLocators.SENT_MESSAGE_WINDOW).text
         assert "Спасибо, мы свяжемся с вами в ближайшее время" in successful_send_message_window_text
 
@@ -130,18 +153,21 @@ class BasePage():
         self.browser.find_element(*BasePageLocators.HEADER_SEARCH_FIELD).send_keys(product)
 
     def click_on_search_button_in_header(self):
-        self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON).click()
+        button = self.browser.find_element(*BasePageLocators.HEADER_SEARCH_BUTTON)
+        button.click()
 
     def should_be_found_products_in_search_results(self):
         search_result_number = len(self.browser.find_elements(*BasePageLocators.PRODUCT_CARD))
-        print(search_result_number)
+        print("Results found:", search_result_number)
         assert search_result_number > 0
 
     def click_on_account_link_in_header(self):
-        self.browser.find_element(*BasePageLocators.ACCOUNT_LINK).click()
+        button = self.browser.find_element(*BasePageLocators.ACCOUNT_LINK)
+        button.click()
 
     def click_on_register_link_in_account_menu(self):
-        self.browser.find_element(*BasePageLocators.REGISTER_LINK).click()
+        button = self.browser.find_element(*BasePageLocators.REGISTER_LINK)
+        button.click()
 
     def fill_in_name_field_in_register_form(self, name):
         self.browser.find_element(*BasePageLocators.REGISTER_NAME).send_keys(name)
@@ -159,13 +185,17 @@ class BasePage():
         self.browser.find_element(*BasePageLocators.REGISTER_PASSWORD).send_keys(password)
 
     def click_on_accept_privacy_policy_checkbox_in_register_form(self):
-        self.browser.find_element(*BasePageLocators.REGISTER_FORM_PRIVACY_CHECKBOX).click()
+        button = self.browser.find_element(*BasePageLocators.REGISTER_FORM_PRIVACY_CHECKBOX)
+        button.click()
 
     def click_on_register_form_send_button(self):
-        self.browser.find_element(*BasePageLocators.REGISTER_FORM_SEND_BUTTON).click()
+        button = self.browser.find_element(*BasePageLocators.REGISTER_FORM_SEND_BUTTON)
+        button.click()
 
     def should_be_user_account_page_after_successful_registration(self, user_name):
-        assert user_name in self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
+        time.sleep(1)
+        account_name = self.browser.find_element(*BasePageLocators.ACCOUNT_HEADER).text
+        assert user_name in account_name
 
 
 
