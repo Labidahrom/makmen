@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class BasePageLocators():
+class MainPageLocators():
     CITY_POPUP_YES_BUTTON = (By.CSS_SELECTOR, "input.prmn-cmngr__confirm-btn.btn-primary")
     CITY_NAME_IN_HEADER = (By.CSS_SELECTOR, ".prmn-cmngr__city")
     FIRST_CITY_NAME_IN_CITY_MENU = (By.XPATH, "//a[@data-id='4115']")
@@ -31,3 +31,9 @@ class BasePageLocators():
     SCREEN_UP_ICON = (By.CSS_SELECTOR, ".fa-chevron-up")
     SEARCH_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#div_search button.dropdown-toggle.btn-lg")
     SECOND_ITEM_IN_SEARCH_DROP_DOWN_MENU = (By.CSS_SELECTOR, ".open ul.dropdown-menu li:nth-child(2) a")
+
+
+class ProductPageLocators():
+    ADD_TO_CART_BUTTON_IN_PRODUCT_CARD = (By.CSS_SELECTOR, ".add_to_cart.button")
+    CONTINUE_SHOPPING_LINK_IN_ADD_TO_CART_POPUP = (By.CSS_SELECTOR, ".col-xs-6.text-left a")
+    NUMBER_IN_CART_ICON = (By.CSS_SELECTOR, "#cart-total")
