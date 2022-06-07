@@ -41,5 +41,5 @@ class ProductPageLocators():
     AMOUNT_OF_PRODUCT_PLUS_ICON = (By.CSS_SELECTOR, ".fa-plus.btn-default")
     CART_ICON_IN_HEADER = (By.CSS_SELECTOR, "#cart")
     DELETE_ICON_IN_CART_MENU_IN_HEADER = (By.CSS_SELECTOR, ".fa.fa-times")
-    CHECKOUT_BUTTON_IN_AFTER_ADD_TO_CART_MENU = (By.CSS_SELECTOR, ".review_pagination .btn-primary")
+    CHECKOUT_BUTTON_IN_AFTER_ADD_TO_CART_MENU = (By.CSS_SELECTOR, ".modal-body .btn-primary")
     CHECKOUT_HEADER = (By.CSS_SELECTOR, "div h1")

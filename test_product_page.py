@@ -10,7 +10,7 @@ import pytest
 #     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
 #     page.click_on_add_to_cart()
 #     page.click_on_continue_shopping()
-#     page.shoud_be_number_on_cart_icon("1")
+#     page.should_be_number_on_cart_icon("1")
 
 # def test_certain_amount_of_goods_can_be_added_to_cart_through_number_input_field(browser):
 #     page = ProductPage(browser)
@@ -18,7 +18,7 @@ import pytest
 #     page.fill_in_number_field_near_to_cart_button("3")
 #     page.click_on_add_to_cart()
 #     page.click_on_continue_shopping()
-#     page.shoud_be_number_on_cart_icon("3")
+#     page.should_be_number_on_cart_icon("3")
 
 # def test_certain_amount_of_goods_can_be_added_to_cart_through_click_on_plus_icon(browser):
 #     page = ProductPage(browser)
@@ -26,21 +26,21 @@ import pytest
 #     page.click_on_plus_icon(2)
 #     page.click_on_add_to_cart()
 #     page.click_on_continue_shopping()
-#     page.shoud_be_number_on_cart_icon("3")
+#     page.should_be_number_on_cart_icon("3")
 
 def test_item_can_be_deleted_from_cart_in_cart_icon_menu(browser):
     page = ProductPage(browser)
     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
     page.click_on_add_to_cart()
     page.click_on_continue_shopping()
-    page.shoud_be_number_on_cart_icon("1")
+    page.should_be_number_on_cart_icon("1")
     page.click_on_cart_icon()
     page.click_on_delete_icon_in_cart_menu()
-    page.shoud_be_number_on_cart_icon("0")
+    page.should_be_number_on_cart_icon("0")
 
-def can_checkout_after_adding_item_to_cart(browser):
+def test_can_checkout_after_adding_item_to_cart(browser):
     page = ProductPage(browser)
     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
-    page.click_on_add_to_cart_button()
+    page.click_on_add_to_cart()
     page.click_on_checkout_button()
-    page.shoud_be_checkout_page("0")
+    page.should_be_checkout_page()
