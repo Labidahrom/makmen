@@ -48,3 +48,11 @@ class ProductPageLocators():
 class CartPageLocators():
     DELETE_FROM_CART_LIST_ICON = (By.CSS_SELECTOR, ".btn-danger")
     EMPTY_CART_TEXT = (By.CSS_SELECTOR, ".content")
+    TEXT_IN_HEADER = (By.CSS_SELECTOR, "#content h1")
+    CHECKOUT_FORM_NAME_FIELD = (By.CSS_SELECTOR, "#customer_firstname")
+    CHECKOUT_FORM_PHONE_FIELD = (By.CSS_SELECTOR, "#customer_telephone")
+    CHECKOUT_FORM_EMAIL_FIELD = (By.CSS_SELECTOR, "#customer_email")
+    SAMOVYVOZ_RADIOBUTTON = (By.XPATH, "//label[@for='pickup.pickup']")
+    CONFIRM_ORDER_BUTTON_IN_CHECKOUT = (By.CSS_SELECTOR, ".simplecheckout-button-right #button-confirm")
+    PLUS_ICON_IN_CART_ICON_LIST = (By.CSS_SELECTOR, ".input-group-btn .fa-plus")
+    SUM_OF_ORDER_IN_CHECKOUT = (By.CSS_SELECTOR, "#total_total .simplecheckout-cart-total-value")

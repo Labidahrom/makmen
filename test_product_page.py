@@ -47,11 +47,37 @@ import pytest
 #     page.click_on_checkout_button()
 #     page.should_be_checkout_page()
 
-def test_item_can_be_deleted_from_cart_in_checkout_page(browser):
+# def test_item_can_be_deleted_from_cart_in_checkout_page(browser):
+#     page = ProductPage(browser)
+#     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
+#     page.click_on_add_to_cart()
+#     page.click_on_checkout_button()
+#     page = CartPage(browser)
+#     page.click_on_delete_icon_in_cart_list()
+#     page.should_be_empty_cart()
+
+# def test_can_send_order_from_checkout_page(browser):
+#     page = ProductPage(browser)
+#     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
+#     page.click_on_add_to_cart()
+#     page.click_on_checkout_button()
+#     page = CartPage(browser)
+#     page.fill_in_name_field_in_checkout_form("This is test")
+#     page.fill_in_phone_field_in_checkout_form("9999999999")
+#     page.fill_in_email_field_in_checkout_form("test@yandex.ru")
+#     page.click_on_samovyvoz_radiobutton()
+#     page.click_on_confirm_order()
+#     page.should_be_order_confirmation_message()
+
+def test_price_in_cart_with_item_amount(browser):
     page = ProductPage(browser)
     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
     page.click_on_add_to_cart()
     page.click_on_checkout_button()
     page = CartPage(browser)
-    page.click_on_delete_icon_in_cart_list()
-    page.should_be_empty_cart()
+    page.click_on_plus_icon_in_cart_item_list(1)
+    page.should_be_sum_of_order("158 404.20")
+
+
+
+
