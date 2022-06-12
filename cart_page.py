@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import random
 
+
 class CartPage(BasePage):
     def click_on_delete_icon_in_cart_list(self):
         button = self.browser.find_element(*CartPageLocators.DELETE_FROM_CART_LIST_ICON)

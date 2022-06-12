@@ -56,3 +56,11 @@ class CartPageLocators():
     CONFIRM_ORDER_BUTTON_IN_CHECKOUT = (By.CSS_SELECTOR, ".simplecheckout-button-right #button-confirm")
     PLUS_ICON_IN_CART_ICON_LIST = (By.CSS_SELECTOR, ".input-group-btn .fa-plus")
     SUM_OF_ORDER_IN_CHECKOUT = (By.CSS_SELECTOR, "#total_total .simplecheckout-cart-total-value")
+
+class CatalogPageLocators():
+    NUMBER_OF_ITEMS_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#input-limit")
+    ITEMS_25_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='25']")
+    ITEM_PRICE_IN_LISTING = (By.CSS_SELECTOR, ".caption .price")
+    SORTING_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#input-sort")
+    MIN_TO_MAX_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По цене (возрастанию)']")
+    MAX_TO_MIN_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По цене (убыванию)']")

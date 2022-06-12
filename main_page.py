@@ -31,7 +31,7 @@ class MainPage(BasePage):
         city_name_in_header_name = city_name_in_header.text
         city_name_in_header.click()
         first_city_in_list = WebDriverWait(self.browser, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//a[@data-id='4115']"))
+            EC.visibility_of_element_located((*MainPageLocators.FIRST_CITY_NAME_IN_CITY_MENU,))
         )
         first_city_name_in_list = first_city_in_list.text
         assert first_city_name_in_list == city_name_in_header_name

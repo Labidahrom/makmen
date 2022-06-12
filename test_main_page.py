@@ -5,11 +5,11 @@ from .locators import MainPageLocators
 from selenium.webdriver.common.by import By
 import pytest
 
-def test_should_be_right_location(browser):
-    page = MainPage(browser)
-    page.open("https://makmen.ru")
-    page.click_on_accept_city_in_popup_massage()
-    page.should_be_current_user_city_in_header("Санкт-Петербург")
+# def test_should_be_right_location(browser):
+#     page = MainPage(browser)
+#     page.open("https://makmen.ru")
+#     page.click_on_accept_city_in_popup_massage()
+#     page.should_be_current_user_city_in_header("Санкт-Петербург")
 
 def test_city_can_be_changed_from_header(browser):
     page = MainPage(browser)
@@ -20,17 +20,17 @@ def test_city_can_be_changed_from_header(browser):
     page.should_be_first_city_from_city_list_in_header()
     time.sleep(3)
     page.find_element((By.XPATH, "//a[@data-id='4115']"))
-
-def test_desktop_callback_form(browser):
-    page = MainPage(browser)
-    page.open("https://makmen.ru")
-    page.click_on_accept_city_in_popup_massage()
-    page.click_on_desktop_callback_form()
-    page.fill_in_name_field_in_desktop_callback_form("This is test")
-    page.fill_in_phone_number_field_in_desktop_callback_form("9999999999")
-    page.click_on_accept_privacy_policy_checkbox_in_callback_form()
-    page.click_on_contact_send_button_in_callback_form()
-    page.should_be_successful_send_message_window()
+#
+# def test_desktop_callback_form(browser):
+#     page = MainPage(browser)
+#     page.open("https://makmen.ru")
+#     page.click_on_accept_city_in_popup_massage()
+#     page.click_on_desktop_callback_form()
+#     page.fill_in_name_field_in_desktop_callback_form("This is test")
+#     page.fill_in_phone_number_field_in_desktop_callback_form("9999999999")
+#     page.click_on_accept_privacy_policy_checkbox_in_callback_form()
+#     page.click_on_contact_send_button_in_callback_form()
+#     page.should_be_successful_send_message_window()
 
 # def test_header_product_search(browser):
 #     page = MainPage(browser)
