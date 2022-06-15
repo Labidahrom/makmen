@@ -64,3 +64,7 @@ class CatalogPageLocators():
     SORTING_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#input-sort")
     MIN_TO_MAX_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По цене (возрастанию)']")
     MAX_TO_MIN_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По цене (убыванию)']")
+    A_TO_Z_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По имени (A - Я)']")
+    ITEM_NAMES_IN_LISTING = (By.CSS_SELECTOR, ".caption a[href*='makmen']")
+    Z_TO_A_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По имени (Я - A)']")
+    PAGE_HEADER = (By.CSS_SELECTOR, "div h1")
