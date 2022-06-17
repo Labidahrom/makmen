@@ -5,22 +5,31 @@ from .locators import MainPageLocators
 from selenium.webdriver.common.by import By
 import pytest
 
+
+# @pytest.mark.mobile
+# @pytest.mark.pc
 # def test_should_be_right_location(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
 #     page.click_on_accept_city_in_popup_massage()
 #     page.should_be_current_user_city_in_header("Санкт-Петербург")
 
+
+@pytest.mark.mobile
+@pytest.mark.pc
 def test_city_can_be_changed_from_header(browser):
     page = MainPage(browser)
     page.open("https://makmen.ru")
     page.click_on_accept_city_in_popup_massage()
+    time.sleep(1)
     page.click_on_city_name_in_header()
+    time.sleep(1)
     page.click_on_first_city_name_in_city_list()
+    time.sleep(1)
     page.should_be_first_city_from_city_list_in_header()
-    time.sleep(3)
-    page.find_element((By.XPATH, "//a[@data-id='4115']"))
 #
+
+# @pytest.mark.pc
 # def test_desktop_callback_form(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
@@ -32,6 +41,9 @@ def test_city_can_be_changed_from_header(browser):
 #     page.click_on_contact_send_button_in_callback_form()
 #     page.should_be_successful_send_message_window()
 
+
+# @pytest.mark.mobile
+# @pytest.mark.pc
 # def test_header_product_search(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
@@ -39,6 +51,7 @@ def test_city_can_be_changed_from_header(browser):
 #     page.type_in_search_query_in_header("слайсер")
 #     page.click_on_search_button_in_header()
 #     page.should_be_found_products_in_search_results()
+
 
 # def test_header_product_search_in_certain_category(browser):
 #     page = MainPage(browser)
