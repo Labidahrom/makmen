@@ -15,18 +15,18 @@ import pytest
 #     page.should_be_current_user_city_in_header("Санкт-Петербург")
 
 
-@pytest.mark.mobile
-@pytest.mark.pc
-def test_city_can_be_changed_from_header(browser):
-    page = MainPage(browser)
-    page.open("https://makmen.ru")
-    page.click_on_accept_city_in_popup_massage()
-    time.sleep(1)
-    page.click_on_city_name_in_header()
-    time.sleep(1)
-    page.click_on_first_city_name_in_city_list()
-    time.sleep(1)
-    page.should_be_first_city_from_city_list_in_header()
+# @pytest.mark.mobile
+# @pytest.mark.pc
+# def test_city_can_be_changed_from_header(browser):
+#     page = MainPage(browser)
+#     page.open("https://makmen.ru")
+#     page.click_on_accept_city_in_popup_massage()
+#     time.sleep(1)
+#     page.click_on_city_name_in_header()
+#     time.sleep(1)
+#     page.click_on_first_city_name_in_city_list()
+#     time.sleep(1)
+#     page.should_be_first_city_from_city_list_in_header()
 #
 
 # @pytest.mark.pc
@@ -42,8 +42,8 @@ def test_city_can_be_changed_from_header(browser):
 #     page.should_be_successful_send_message_window()
 
 
-# @pytest.mark.mobile
-# @pytest.mark.pc
+@pytest.mark.mobile
+@pytest.mark.pc
 # def test_header_product_search(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
@@ -53,6 +53,8 @@ def test_city_can_be_changed_from_header(browser):
 #     page.should_be_found_products_in_search_results()
 
 
+# @pytest.mark.mobile
+# @pytest.mark.pc
 # def test_header_product_search_in_certain_category(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
@@ -69,6 +71,8 @@ def test_city_can_be_changed_from_header(browser):
 #     page.click_on_search_button_in_header()
 #     page.should_be_no_found_products_in_search_results()
 
+
+# @pytest.mark.pc
 # def test_register_new_user(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
@@ -83,7 +87,9 @@ def test_city_can_be_changed_from_header(browser):
 #     page.click_on_accept_privacy_policy_checkbox_in_register_form()
 #     page.click_on_register_form_send_button()
 #     page.should_open_user_account_page("test")
-#
+
+
+# @pytest.mark.pc
 # @pytest.mark.xfail(reason="just site bug")
 # def test_sign_in_user(browser):
 #     page = MainPage(browser)
@@ -96,6 +102,8 @@ def test_city_can_be_changed_from_header(browser):
 #     page.click_on_sign_in_form_send_button()
 #     page.should_open_user_account_page("test1")
 
+
+# @pytest.mark.pc
 # def test_scroll_up_screen_icon(browser):
 #     page = MainPage(browser)
 #     page.open("https://makmen.ru")
