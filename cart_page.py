@@ -1,5 +1,6 @@
 from .locators import CartPageLocators
 from .base_page import BasePage
+from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -41,6 +42,17 @@ class CartPage(BasePage):
     def click_on_plus_icon_in_cart_item_list(self, how_many):
         plus_icon = self.browser.find_element(*CartPageLocators.PLUS_ICON_IN_CART_ICON_LIST)
         plus_icon.click()
+
+    def click_on_item_number_field_in_checkout(self):
+        number_field = self.browser.find_element(*CartPageLocators.ITEM_NUMBER_FIELD_IN_CHECKOUT)
+        number_field.click()
+
+    def fill_in_item_number_field_in_checkout(self, item_number):
+        number_field = self.browser.find_element(*CartPageLocators.ITEM_NUMBER_FIELD_IN_CHECKOUT)
+        time.sleep(1)
+        number_field.send_keys(Keys.CONTROL, 'a')
+        number_field.send_keys(item_number)
+
 
     def should_be_sum_of_order(self, sum):
         time.sleep(1)

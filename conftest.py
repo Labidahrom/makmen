@@ -16,12 +16,4 @@ def browser(request):
         browser.set_window_size(400, 800)
     browser.implicitly_wait(10)
     yield browser
-    browser.quit()
-
-@pytest.fixture()
-def mobile_browser(request):
-    browser = webdriver.Chrome()
-    browser.set_window_size(400,800)
-    browser.implicitly_wait(10)
-    yield browser
-    browser.quit()
+    # browser.quit()

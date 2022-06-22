@@ -75,6 +75,10 @@ class MainPage(BasePage):
         button = self.browser.find_element(*MainPageLocators.ACCOUNT_LINK)
         button.click()
 
+    def click_on_account_link_in_header_mobile(self):
+        button = self.browser.find_element(*MainPageLocators.ACCOUNT_LINK_MOBILE)
+        button.click()
+
     def click_on_register_link_in_account_menu(self):
         button = self.browser.find_element(*MainPageLocators.REGISTER_LINK)
         button.click()
@@ -102,10 +106,12 @@ class MainPage(BasePage):
         button = self.browser.find_element(*MainPageLocators.REGISTER_FORM_SEND_BUTTON)
         button.click()
 
-    def should_open_user_account_page(self, user_name):
+
+    def should_open_user_account_page(self):
         time.sleep(1)
-        account_name = self.browser.find_element(*MainPageLocators.ACCOUNT_HEADER).text
-        assert user_name in account_name
+        page_header = self.browser.find_element(*MainPageLocators.USER_PAGE_HEADER).text
+        print(page_header)
+        assert 'Моя учетная запись' in page_header
 
     def click_on_sigh_in_link_in_account_menu(self):
         button = self.browser.find_element(*MainPageLocators.SIGN_IN_LINK)
@@ -131,8 +137,8 @@ class MainPage(BasePage):
         time.sleep(1)
 
     def shoud_be_site_header_visible_on_screen(self):
-        account_link = self.browser.find_element(*MainPageLocators.ACCOUNT_LINK)
-        assert account_link.is_displayed()
+        logo_text = self.browser.find_element(*MainPageLocators.UNDER_LOGO_TEXT).text
+        assert 'Оборудование для HoReCa' in logo_text
 
     def click_on_search_drop_down_category_meny(self):
         button = self.browser.find_element(*MainPageLocators.SEARCH_DROP_DOWN_MENU)

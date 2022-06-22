@@ -15,6 +15,7 @@ class MainPageLocators():
     HEADER_SEARCH_BUTTON = (By.CSS_SELECTOR, "#div_search button.search")
     PRODUCT_CARD = (By.CSS_SELECTOR, ".product-layout")
     ACCOUNT_LINK = (By.CSS_SELECTOR, ".dropdown-toggle .hidden-xs")
+    ACCOUNT_LINK_MOBILE = (By.CSS_SELECTOR, ".fa-user")
     REGISTER_LINK = (By.XPATH, "//a[@onclick='register();']")
     SIGN_IN_LINK = (By.XPATH, "//a[@onclick='login();']")
     REGISTER_NAME = (By.XPATH, "//input[@name='firstname']")
@@ -28,9 +29,11 @@ class MainPageLocators():
     LOGIN_EMAIL = (By.CSS_SELECTOR, "div#popup_login input[name='email']")
     LOGIN_PASSWORD = (By.CSS_SELECTOR, "div#popup_login input[name='password']")
     ACCOUNT_HEADER = (By.CSS_SELECTOR, "span.hidden-xs")
+    USER_PAGE_HEADER = (By.CSS_SELECTOR, "h3 span")
     SCREEN_UP_ICON = (By.CSS_SELECTOR, ".fa-chevron-up")
     SEARCH_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#div_search button.dropdown-toggle.btn-lg")
     SECOND_ITEM_IN_SEARCH_DROP_DOWN_MENU = (By.CSS_SELECTOR, ".open ul.dropdown-menu li:nth-child(2) a")
+    UNDER_LOGO_TEXT = (By.CSS_SELECTOR, ".logo-title div.title")
 
 
 class ProductPageLocators():
@@ -56,6 +59,7 @@ class CartPageLocators():
     CONFIRM_ORDER_BUTTON_IN_CHECKOUT = (By.CSS_SELECTOR, ".simplecheckout-button-right #button-confirm")
     PLUS_ICON_IN_CART_ICON_LIST = (By.CSS_SELECTOR, ".input-group-btn .fa-plus")
     SUM_OF_ORDER_IN_CHECKOUT = (By.CSS_SELECTOR, "#total_total .simplecheckout-cart-total-value")
+    ITEM_NUMBER_FIELD_IN_CHECKOUT = (By.XPATH, "//input[@data-onchange='changeProductQuantity']")
 
 class CatalogPageLocators():
     NUMBER_OF_ITEMS_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#input-limit")
@@ -68,3 +72,4 @@ class CatalogPageLocators():
     ITEM_NAMES_IN_LISTING = (By.CSS_SELECTOR, ".caption a[href*='makmen']")
     Z_TO_A_IN_DROP_DOWN_MENU = (By.XPATH, "//option[text()='По имени (Я - A)']")
     PAGE_HEADER = (By.CSS_SELECTOR, "div h1")
+
