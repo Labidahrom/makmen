@@ -1,22 +1,16 @@
-from .catalog_page import CatalogPage
-from .locators import CatalogPageLocators
-import time
-from selenium import webdriver
-from .locators import MainPageLocators
-from .locators import CartPageLocators
-from selenium.webdriver.common.by import By
+from .catalog_page import CatalogPage  # импортируем класс с методами страницы каталога
 import pytest
 
 
-@pytest.mark.mobile
-@pytest.mark.pc
+@pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
+@pytest.mark.pc  # тест можно запускать в десктопной версии сайта
 def test_number_of_displayed_items_can_be_changed(browser):
-    page = CatalogPage(browser)
-    page.open("https://makmen.ru/teplovoe-oborudovanie/aksessuary-dlya-teplovogo-oborudovaniya/")
-    page.shoold_be_certain_amount_of_items_on_catalog_page(15)
-    page.click_on_number_of_items_on_page_drop_down_menu()
-    page.choose_25_in_number_of_displayed_items_drop_down_menu()
-    page.shoold_be_certain_amount_of_items_on_catalog_page(25)
+    page = CatalogPage(browser)  # создаем объект класса CatalogPage для доступа к методам страницы каталога
+    page.open("https://makmen.ru/teplovoe-oborudovanie/aksessuary-dlya-teplovogo-oborudovaniya/")  # открыть сайт
+    page.shoold_be_certain_amount_of_items_on_catalog_page(15)  # проверить, что на странице нужное количество товара
+    page.click_on_number_of_items_on_page_drop_down_menu()  # кликнуть по меню выбора количества
+    page.choose_25_in_number_of_displayed_items_drop_down_menu()  # выбрать определенное количество (25)
+    page.shoold_be_certain_amount_of_items_on_catalog_page(25)  # проверить ожидаемый результат
 
 
 @pytest.mark.mobile

@@ -1,17 +1,13 @@
-from .locators import CartPageLocators
-from .base_page import BasePage
-from selenium.webdriver.common.keys import Keys
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import random
+from .locators import CartPageLocators  # импорт локаторов для методов класса
+from .base_page import BasePage  # импорт базового класса
+from selenium.webdriver.common.keys import Keys # для отправки сочетания клавиш в форму обратной связи
+import time  # для метода задержи исполнения, нужно в некоторых тестах
 
 
 class CartPage(BasePage):
     def click_on_delete_icon_in_cart_list(self):
-        button = self.browser.find_element(*CartPageLocators.DELETE_FROM_CART_LIST_ICON)
-        button.click()
+        button = self.browser.find_element(*CartPageLocators.DELETE_FROM_CART_LIST_ICON)  # найти элемент
+        button.click()  # кликнуть по элементу
 
     def should_be_empty_cart(self):
         cart_text = self.browser.find_element(*CartPageLocators.EMPTY_CART_TEXT).text
@@ -58,5 +54,6 @@ class CartPage(BasePage):
         time.sleep(1)
         sum_of_order = self.browser.find_element(*CartPageLocators.SUM_OF_ORDER_IN_CHECKOUT).text
         print(sum_of_order)
+        time.sleep(2)
         assert sum in sum_of_order
 

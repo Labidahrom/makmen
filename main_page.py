@@ -1,16 +1,15 @@
-from .locators import MainPageLocators
-from .base_page import BasePage
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import random
+from .locators import MainPageLocators  # импорт локаторов для методов класса
+from .base_page import BasePage  # импорт базового класса
+import time # для метода задержи исполнения, нужно в некоторых тестах
+from selenium.webdriver.support.ui import WebDriverWait  # модуль явных ожиданий, нужно для части тестов
+from selenium.webdriver.support import expected_conditions as EC  # модуль условий, нужно для части тестов
+
 
 
 class MainPage(BasePage):
     def click_on_accept_city_in_popup_massage(self):
-        button = self.browser.find_element(*MainPageLocators.CITY_POPUP_YES_BUTTON)
-        button.click()
+        button = self.browser.find_element(*MainPageLocators.CITY_POPUP_YES_BUTTON)  # найти элемент
+        button.click()  # кликнуть по элементу
 
     def should_be_current_user_city_in_header(self, current_user_city):
         city_name_in_header = self.browser.find_element(*MainPageLocators.CITY_NAME_IN_HEADER).text

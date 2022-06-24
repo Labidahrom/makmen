@@ -1,18 +1,14 @@
-﻿from .main_page import MainPage
-import time
-from selenium import webdriver
-from .locators import MainPageLocators
-from selenium.webdriver.common.by import By
+﻿from .main_page import MainPage  # импортируем класс с методами главной страницы
 import pytest
 
 
-@pytest.mark.mobile
-@pytest.mark.pc
+@pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
+@pytest.mark.pc  # тест можно запускать в десктопной версии сайта
 def test_should_be_right_location(browser):
-    page = MainPage(browser)
-    page.open("https://makmen.ru")
-    page.click_on_accept_city_in_popup_massage()
-    page.should_be_current_user_city_in_header("Санкт-Петербург")
+    page = MainPage(browser)  # создаем объект класса MainPage что бы получить доступ ко всем методам главной страницы
+    page.open("https://makmen.ru")  # открыть сайт
+    page.click_on_accept_city_in_popup_massage()  # кликнуть по кнопке "Принять город"
+    page.should_be_current_user_city_in_header("Санкт-Петербург")  # Проверка ожидаемого результата
 
 
 @pytest.mark.mobile
@@ -21,11 +17,8 @@ def test_city_can_be_changed_from_header(browser):
     page = MainPage(browser)
     page.open("https://makmen.ru")
     page.click_on_accept_city_in_popup_massage()
-    time.sleep(1)
     page.click_on_city_name_in_header()
-    time.sleep(1)
     page.click_on_first_city_name_in_city_list()
-    time.sleep(1)
     page.should_be_first_city_from_city_list_in_header()
 
 
@@ -83,7 +76,7 @@ def test_register_new_user(browser):
     page.fill_in_name_field_in_register_form("test1")
     page.fill_in_surname_field_in_register_form("testov")
     page.fill_in_phone_field_in_register_form("9999999999")
-    page.fill_in_email_field_in_register_form("test-em612@yandex.ru")
+    page.fill_in_email_field_in_register_form("test-emaz6@yandex.ru")
     page.fill_in_password_field_in_register_form("9999999999")
     page.click_on_accept_privacy_policy_checkbox_in_register_form()
     page.click_on_register_form_send_button()

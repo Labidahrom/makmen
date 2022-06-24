@@ -1,16 +1,12 @@
-from .locators import ProductPageLocators
-from .base_page import BasePage
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import random
+from .locators import ProductPageLocators  # импорт локаторов для методов класса
+from .base_page import BasePage  # импорт базового класса
+import time  # для метода задержи исполнения, нужно в некоторых тестах
 
 
 class ProductPage(BasePage):
     def click_on_add_to_cart(self):
-        button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON_IN_PRODUCT_CARD)
-        button.click()
+        button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON_IN_PRODUCT_CARD)  # найти элемент
+        button.click()  # кликнуть по элементу
 
     def click_on_continue_shopping(self):
         button = self.browser.find_element(*ProductPageLocators.CONTINUE_SHOPPING_LINK_IN_ADD_TO_CART_POPUP)

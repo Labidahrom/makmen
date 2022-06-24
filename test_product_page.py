@@ -1,21 +1,16 @@
-from .product_page import ProductPage
-from .cart_page import CartPage
-import time
-from selenium import webdriver
-from .locators import MainPageLocators
-from .locators import CartPageLocators
-from selenium.webdriver.common.by import By
+from .product_page import ProductPage  # импортируем класс с методами страницы товара
+from .cart_page import CartPage # импортируем класс с методами страницы корзины
 import pytest
 
 
-@pytest.mark.mobile
-@pytest.mark.pc
+@pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
+@pytest.mark.pc  # тест можно запускать в десктопной версии сайта
 def test_item_can_be_added_to_cart(browser):
-    page = ProductPage(browser)
-    page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
-    page.click_on_add_to_cart()
-    page.click_on_continue_shopping()
-    page.should_be_number_on_cart_icon("1")
+    page = ProductPage(browser)  # создаем объект класса ProductPage для доступа к методам страницы товара
+    page.open("https://makmen.ru/index.php?route=product/product&product_id=110213") # открыть сайт
+    page.click_on_add_to_cart() # кликнуть по кнопке "Добавить в корзину"
+    page.click_on_continue_shopping() # кликнуть по кнопке "Продолжить покупки"
+    page.should_be_number_on_cart_icon("1") # проверить ожидаемый результат
 
 
 @pytest.mark.mobile
@@ -37,7 +32,6 @@ def test_certain_amount_of_goods_can_be_added_to_cart_through_click_on_plus_icon
     page.click_on_plus_icon(2)
     page.click_on_add_to_cart()
     page.click_on_continue_shopping()
-    time.sleep(4)
     page.should_be_number_on_cart_icon("3")
 
 
@@ -71,7 +65,7 @@ def test_item_can_be_deleted_from_cart_in_checkout_page(browser):
     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213")
     page.click_on_add_to_cart()
     page.click_on_checkout_button()
-    page = CartPage(browser)
+    page = CartPage(browser)  # пересоздаем page как объект класса CartPage, т.к происходит переход в корзину"
     page.click_on_delete_icon_in_cart_list()
     page.should_be_empty_cart()
 
