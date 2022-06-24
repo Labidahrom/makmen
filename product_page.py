@@ -3,8 +3,8 @@ from .base_page import BasePage  # импорт базового класса
 import time  # для метода задержи исполнения, нужно в некоторых тестах
 
 
-class ProductPage(BasePage):
-    def click_on_add_to_cart(self):
+class ProductPage(BasePage):  # создание класса для методов страницы товара
+    def click_on_add_to_cart(self):  # метод клика по кнопке добавления в корзину
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON_IN_PRODUCT_CARD)  # найти элемент
         button.click()  # кликнуть по элементу
 

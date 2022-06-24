@@ -1,7 +1,7 @@
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By  # библиотека для работы селекторов
 
 
-class MainPageLocators():
+class MainPageLocators():  # локаторы для главной страницы
     CITY_POPUP_YES_BUTTON = (By.CSS_SELECTOR, "input.prmn-cmngr__confirm-btn.btn-primary")
     CITY_NAME_IN_HEADER = (By.CSS_SELECTOR, ".prmn-cmngr__city")
     FIRST_CITY_NAME_IN_CITY_MENU = (By.XPATH, "//a[@data-id='4115']")
@@ -60,6 +60,7 @@ class CartPageLocators():
     PLUS_ICON_IN_CART_ICON_LIST = (By.CSS_SELECTOR, ".input-group-btn .fa-plus")
     SUM_OF_ORDER_IN_CHECKOUT = (By.CSS_SELECTOR, "#total_total .simplecheckout-cart-total-value")
     ITEM_NUMBER_FIELD_IN_CHECKOUT = (By.XPATH, "//input[@data-onchange='changeProductQuantity']")
+
 
 class CatalogPageLocators():
     NUMBER_OF_ITEMS_DROP_DOWN_MENU = (By.CSS_SELECTOR, "#input-limit")

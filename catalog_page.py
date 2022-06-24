@@ -1,19 +1,14 @@
-from .base_page import BasePage
-from .locators import CatalogPageLocators
-from .locators import CartPageLocators
-from .locators import MainPageLocators
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import random
+from .base_page import BasePage  # импорт базового класса
+from .locators import CatalogPageLocators  # импорт локаторов для методов класса
+from .locators import MainPageLocators  # импорт локаторов для методов класса
+import time  # для метода задержи исполнения, нужно в некоторых тестах
 
 
-class CatalogPage(BasePage):
-    def shoold_be_certain_amount_of_items_on_catalog_page(self, number_of_items):
-        items_on_catalog_page = len(self.browser.find_elements(*MainPageLocators.PRODUCT_CARD))
-        print("Results found:", items_on_catalog_page)
-        assert items_on_catalog_page == number_of_items
+class CatalogPage(BasePage):  # создание класса для методов страницы каталога
+    def shoold_be_certain_amount_of_items_on_catalog_page(self, number_of_items):  # метод проверки количества карточек
+        items_on_catalog_page = len(self.browser.find_elements(*MainPageLocators.PRODUCT_CARD))  # посчитать карточки
+        print("Results found:", items_on_catalog_page)  # вывод количества карточек товара на экран
+        assert items_on_catalog_page == number_of_items  # проверить что количество равно ожидаемому результату
 
     def click_on_number_of_items_on_page_drop_down_menu(self):
         menu = self.browser.find_element(*CatalogPageLocators.NUMBER_OF_ITEMS_DROP_DOWN_MENU)

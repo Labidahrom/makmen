@@ -4,7 +4,7 @@ import pytest
 
 @pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
 @pytest.mark.pc  # тест можно запускать в десктопной версии сайта
-def test_should_be_right_location(browser):
+def test_should_be_right_location(browser):  # метод проверки правильного определения города пользователя
     page = MainPage(browser)  # создаем объект класса MainPage что бы получить доступ ко всем методам главной страницы
     page.open("https://makmen.ru")  # открыть сайт
     page.click_on_accept_city_in_popup_massage()  # кликнуть по кнопке "Принять город"

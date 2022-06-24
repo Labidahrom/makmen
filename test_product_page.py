@@ -5,7 +5,7 @@ import pytest
 
 @pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
 @pytest.mark.pc  # тест можно запускать в десктопной версии сайта
-def test_item_can_be_added_to_cart(browser):
+def test_item_can_be_added_to_cart(browser):  # проверка добавления в корзину
     page = ProductPage(browser)  # создаем объект класса ProductPage для доступа к методам страницы товара
     page.open("https://makmen.ru/index.php?route=product/product&product_id=110213") # открыть сайт
     page.click_on_add_to_cart() # кликнуть по кнопке "Добавить в корзину"

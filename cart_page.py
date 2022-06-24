@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys # для отправки соч
 import time  # для метода задержи исполнения, нужно в некоторых тестах
 
 
-class CartPage(BasePage):
-    def click_on_delete_icon_in_cart_list(self):
+class CartPage(BasePage):  # создание класса для методов страницы корзины
+    def click_on_delete_icon_in_cart_list(self):  # метод клика по кнопке удаления
         button = self.browser.find_element(*CartPageLocators.DELETE_FROM_CART_LIST_ICON)  # найти элемент
         button.click()  # кликнуть по элементу
 
@@ -48,7 +48,6 @@ class CartPage(BasePage):
         time.sleep(1)
         number_field.send_keys(Keys.CONTROL, 'a')
         number_field.send_keys(item_number)
-
 
     def should_be_sum_of_order(self, sum):
         time.sleep(1)

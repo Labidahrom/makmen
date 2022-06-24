@@ -4,7 +4,7 @@ import pytest
 
 @pytest.mark.mobile  # тест можно запускать в мобильной версии сайта
 @pytest.mark.pc  # тест можно запускать в десктопной версии сайта
-def test_number_of_displayed_items_can_be_changed(browser):
+def test_number_of_displayed_items_can_be_changed(browser):  # проверка изменения количества отображаемого товара
     page = CatalogPage(browser)  # создаем объект класса CatalogPage для доступа к методам страницы каталога
     page.open("https://makmen.ru/teplovoe-oborudovanie/aksessuary-dlya-teplovogo-oborudovaniya/")  # открыть сайт
     page.shoold_be_certain_amount_of_items_on_catalog_page(15)  # проверить, что на странице нужное количество товара

@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC  # модуль
 
 
 
-class MainPage(BasePage):
-    def click_on_accept_city_in_popup_massage(self):
+class MainPage(BasePage):  # создание класса для методов главной страницы
+    def click_on_accept_city_in_popup_massage(self):  # метод клика по кнопке "принять город"
         button = self.browser.find_element(*MainPageLocators.CITY_POPUP_YES_BUTTON)  # найти элемент
         button.click()  # кликнуть по элементу
 
@@ -104,7 +104,6 @@ class MainPage(BasePage):
     def click_on_register_form_send_button(self):
         button = self.browser.find_element(*MainPageLocators.REGISTER_FORM_SEND_BUTTON)
         button.click()
-
 
     def should_open_user_account_page(self):
         time.sleep(1)
