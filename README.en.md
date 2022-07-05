@@ -1,6 +1,6 @@
 # Makmen.ru test with Selenium WebDriver and Python
 
-*Читать на другом языке: [русский](https://github.com/Labidahrom/makmen/blob/master/README.md)*
+*[Читать на русском](https://github.com/Labidahrom/makmen/blob/master/README.md)*
 
 This repository contains tests written in Python for Selenium Webdriver using the Pytest framework. The tests check the functionality of the makmen.ru website, which can be used in a typical user scenario (feedback forms, a shopping cart, sorting product cards, and other elements).
 
