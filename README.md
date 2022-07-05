@@ -1,6 +1,6 @@
 # Тестирование сайта Makmen.ru с помощью Selenium WebDriver и Python
 
-*[Read this in english:] (https://github.com/Labidahrom/makmen/blob/master/README.en.md)*
+*[Read this in english](https://github.com/Labidahrom/makmen/blob/master/README.en.md)*
 
 В данном репозитории находятся тесты написанные на языке Python для Selenium Webdriver с использованием фреймворка Pytest. Тесты проверяют функционал сайта makmen.ru, который может быть задействован в рамках типичного пользовательского сценария (формы обратной связи, корзину, сортировку карточек товара и другие элементы).
 
